@@ -16,7 +16,8 @@ spring:
 
 eureka:
   instance:
-    instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${random.value}}
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    hostname: ${spring.cloud.client.ip-address}
   client:
     register-with-eureka: true
     fetch-registry: true
@@ -28,7 +29,13 @@ greeting:
 logging:
   level:
     com.example.userservice: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
 
-token:
-  expiration_time: 86400000
-  secret: user_token
+#token:
+#  expiration_time: 86400000
+#  secret: user_token
+
