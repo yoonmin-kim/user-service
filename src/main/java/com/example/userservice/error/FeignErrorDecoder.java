@@ -16,7 +16,6 @@ public class FeignErrorDecoder implements ErrorDecoder {
 
     @Override
     public Exception decode(String methodName, Response response) {
-        System.out.println("여기 안타나?");
         switch (response.status()) {
             case 400:
                 break;
